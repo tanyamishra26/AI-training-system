@@ -60,11 +60,17 @@ if uploaded_file:
                 )
 
                 if selected is not None:
-                    correct_option = q["options"][ord(q["answer"]) - ord("A")]
-
-                    if selected == correct_option:
-                        st.success("✅ Correct!")
-                    else:
-                        st.error(f"❌ Incorrect! Correct answer: {correct_option}")
+                    answer_letter = q["answer"].strip()[0]
+                    
+                    correct_option = None
+                    for opt in q["options"]:
+                        if opt.startswith(answer_letter):
+                            correct_option = opt
+                            break
+                        
+                        if selected == correct_option:
+                            st.success("✅ Correct!")
+                            else:
+                            st.error(f"❌ Incorrect! Correct answer: {correct_option}")
 
                 st.markdown("---")
