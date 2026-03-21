@@ -28,9 +28,6 @@ if uploaded_file:
         st.subheader("📘 Training Steps")
         st.write(training)
 
-        st.subheader("🧠 Quiz")
-        st.write(quiz)
-
         st.markdown("## 🧠 Knowledge Check")
         
         quiz_data = parse_quiz(quiz)
