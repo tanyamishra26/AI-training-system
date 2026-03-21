@@ -21,10 +21,28 @@ SOP:
 QUIZ_PROMPT = """
 You are an assessment generator.
 
-Generate 5 multiple-choice questions based on the SOP.
-Each question should have:
-- 4 options labeled A, B, C, D each option on a new line after the question
-- Correct answer clearly stated on the next line (e.g. "Answer: B")
+Generate 5 multiple-choice questions based on the SOP below.
+You MUST follow this exact format for every question — no exceptions:
+
+Question 1: [question text]
+A) [option]
+B) [option]
+C) [option]
+D) [option]
+Answer: [letter only]
+
+Question 2: [question text]
+A) [option]
+B) [option]
+C) [option]
+D) [option]
+Answer: [letter only]
+
+Rules:
+- Each option (A, B, C, D) MUST be on its own separate line
+- "Answer:" MUST be on its own line immediately after option D
+- Do NOT put all options on one line
+- Do NOT add any extra commentary or text outside this format
 
 SOP:
 {input_text}
