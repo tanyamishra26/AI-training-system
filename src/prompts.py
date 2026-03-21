@@ -19,17 +19,20 @@ SOP:
 """
 
 QUIZ_PROMPT = """
-Generate 5 multiple-choice questions based on the SOP.
+Generate 5 MCQs.
 
-STRICT FORMAT:
-Q1: Question text
-A) Option
-B) Option
-C) Option
-D) Option
+STRICT RULES:
+- Start each question with "Question 1:", "Question 2:"
+- Each option must start with A), B), C), D)
+- End with: Answer: <letter>
+
+Example:
+Question 1: ...
+A) ...
+B) ...
+C) ...
+D) ...
 Answer: B
-
-(Repeat for all questions)
 
 SOP:
 {input_text}
