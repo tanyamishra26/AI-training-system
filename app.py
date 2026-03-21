@@ -23,7 +23,7 @@ if uploaded_file:
 
         # Display results
         st.subheader("📄 Summary")
-        st.write(summary)
+        st.markdown(summary)
 
         st.subheader("📘 Training Steps")
         st.write(training)
