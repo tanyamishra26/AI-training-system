@@ -3,6 +3,12 @@
 An AI-powered system that converts SOP (Standard Operating Procedure) documents into structured training content, including summaries, step-by-step instructions, and evaluation quizzes.
 
 ---
+## Live Demo
+
+**Deployed Application:**  
+[AI Training System – Streamlit App](https://aitrainingsystem.streamlit.app/)
+
+---
 
 ## Overview
 
