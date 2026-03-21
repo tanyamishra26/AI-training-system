@@ -26,18 +26,12 @@ def generate_training(text):
 
 
 def format_quiz(text):
-    # Remove any existing <br> tags to avoid duplication
-    text = re.sub(r'<br\s*/?>', ' ', text)
-
     # Put each option (A, B, C, D) on its own line
-    text = re.sub(r'\s+([A-D])\)', r'<br>\1)', text)
-
+    text = re.sub(r'\s+([A-D])\)', r'\n\1)', text)
     # Put Answer: on its own line
-    text = re.sub(r'\s+(Answer:)', r'<br><br>\1', text)
-
+    text = re.sub(r'\s+(Answer:)', r'\n\1', text)
     # Put each Question on its own line with a blank line before it
-    text = re.sub(r'\s*(Question\s+\d+:)', r'<br><br>\1', text)
-
+    text = re.sub(r'\s*(Question\s+\d+:)', r'\n\n\1', text)
     return text.strip()
 
 
