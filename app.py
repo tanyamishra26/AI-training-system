@@ -4,47 +4,67 @@ from src.generators import generate_summary, generate_training, generate_quiz, p
 
 st.set_page_config(page_title="AI Trainer", layout="wide")
 
-st.title("AI Training System")
+# 🔹 Initialize session state
+if "generated" not in st.session_state:
+    st.session_state.generated = False
+
+# 🔹 Title
+st.title("📘 SOP → AI Training System")
 
 uploaded_file = st.file_uploader("Upload SOP PDF", type=["pdf"])
 
 if uploaded_file:
-    if st.button("Generate Training Content"):
+
+    # 🔹 Generate button
+    if st.button("🚀 Generate Training Content"):
+        st.session_state.generated = True
 
         with st.spinner("Processing SOP..."):
-
-            # Extract text
             text = extract_text_from_pdf(uploaded_file)
 
-            # Generate outputs
-            summary = generate_summary(text)
-            training = generate_training(text)
-            quiz = generate_quiz(text)
+            # Store results in session state
+            st.session_state.summary = generate_summary(text)
+            st.session_state.training = generate_training(text)
+            st.session_state.quiz = generate_quiz(text)
 
-        # Display results
+    # 🔹 Show results AFTER generation
+    if st.session_state.generated:
+
+        # 📄 Summary
         st.subheader("📄 Summary")
-        st.markdown(summary)
+        st.markdown(st.session_state.summary)
 
+        # 📘 Training
         st.subheader("📘 Training Steps")
-        st.write(training)
+        st.markdown(st.session_state.training)
 
+        st.markdown("---")
+
+        # 🧠 Quiz Section
         st.markdown("## 🧠 Knowledge Check")
-        
-        quiz_data = parse_quiz(quiz)
-        for i, q in enumerate(quiz_data):
-            st.markdown(f"### {q['question']}")
-            
-            selected = st.radio(
-                "Choose an option:",
-                q["options"],
-                key=i,
-                index=None  
-            )
-            
-            if selected:
-                correct_option = q["options"][ord(q["answer"]) - ord("A")]
 
-                if selected == correct_option:
-                    st.success("✅ Correct!")
-                else:
-                    st.error(f"❌ Incorrect! Correct answer: {correct_option}")
+        quiz_data = parse_quiz(st.session_state.quiz)
+
+        if not quiz_data:
+            st.error("⚠️ Quiz parsing failed. Please check format.")
+        else:
+            for i, q in enumerate(quiz_data):
+
+                st.markdown(f"### {q['question']}")
+
+                selected = st.radio(
+                    "Choose an option:",
+                    q["options"],
+                    key=f"q_{i}",
+                    index=None
+                )
+
+                if selected is not None:
+                    correct_option = q["options"][ord(q["answer"]) - ord("A")]
+
+                    if selected == correct_option:
+                        st.success("✅ Correct!")
+                    else:
+                        st.error(f"❌ Incorrect! Correct answer: {correct_option}")
+
+                st.markdown("---")
