@@ -33,34 +33,3 @@ def generate_quiz(text):
     )
 
     return response.choices[0].message.content
-
-def parse_quiz(quiz_text):
-    questions = []
-    
-    blocks = quiz_text.split("Question")
-
-    for block in blocks:
-        lines = block.strip().split("\n")
-
-        if len(lines) < 5:
-            continue
-
-        question = lines[0]
-        options = []
-        answer = None
-
-        for line in lines[1:]:
-            if line.strip().startswith(("A)", "B)", "C)", "D)")):
-                options.append(line.strip())
-
-            if "Answer" in line or "Correct" in line:
-                answer = line.split(":")[-1].strip()
-
-        if question and options and answer:
-            questions.append({
-                "question": question,
-                "options": options,
-                "answer": answer
-            })
-
-    return questions

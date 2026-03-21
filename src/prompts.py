@@ -19,23 +19,13 @@ SOP:
 """
 
 QUIZ_PROMPT = """
-Generate 5 MCQs.
+You are an assessment generator.
 
-STRICT RULES:
-- Start each question with "Question 1:", "Question 2:"
-- Each option must start with A), B), C), D)
-- End with: Answer: <letter>
-
-Example:
-Question 1: ...
-A) ...
-B) ...
-C) ...
-D) ...
-Answer: B
+Generate 5 multiple-choice questions based on the SOP.
+Each question should have:
+- 4 options labeled A, B, C, D each option on a new line after the question
+- Correct answer clearly stated on the next line (e.g. "Answer: B")
 
 SOP:
 {input_text}
 """
-
-
