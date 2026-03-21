@@ -1,6 +1,6 @@
 import streamlit as st
 from src.pdf_utils import extract_text_from_pdf
-from src.generators import generate_summary, generate_training, generate_quiz
+from src.generators import generate_summary, generate_training, generate_quiz, parse_quiz
 
 st.set_page_config(page_title="AI Trainer", layout="wide")
 
@@ -30,3 +30,23 @@ if uploaded_file:
 
         st.subheader("🧠 Quiz")
         st.write(quiz)
+
+        st.markdown("## 🧠 Knowledge Check")
+        
+        quiz_data = parse_quiz(quiz)
+        for i, q in enumerate(quiz_data):
+            st.markdown(f"### {q['question']}")
+            
+            selected = st.radio(
+                "Choose an option:",
+                q["options"],
+                key=i
+            )
+            
+            if selected:
+                correct_option = q["options"][ord(q["answer"]) - ord("A")]
+
+                if selected == correct_option:
+                    st.success("✅ Correct!")
+                else:
+                    st.error(f"❌ Incorrect! Correct answer: {correct_option}")

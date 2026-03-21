@@ -19,13 +19,20 @@ SOP:
 """
 
 QUIZ_PROMPT = """
-You are an assessment generator.
-
 Generate 5 multiple-choice questions based on the SOP.
-Each question should have:
-- 4 options
-- Correct answer clearly marked
+
+STRICT FORMAT:
+Q1: Question text
+A) Option
+B) Option
+C) Option
+D) Option
+Answer: B
+
+(Repeat for all questions)
 
 SOP:
 {input_text}
 """
+
+

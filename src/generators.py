@@ -33,3 +33,27 @@ def generate_quiz(text):
     )
 
     return response.choices[0].message.content
+
+def parse_quiz(quiz_text):
+    questions = []
+    blocks = quiz_text.split("\n\n")
+
+    for block in blocks:
+        lines = block.strip().split("\n")
+
+        if len(lines) < 6:
+            continue
+
+        question = lines[0]
+        options = lines[1:5]
+        answer_line = lines[5]
+
+        answer = answer_line.split(":")[-1].strip()
+
+        questions.append({
+            "question": question,
+            "options": options,
+            "answer": answer
+        })
+
+    return questions
