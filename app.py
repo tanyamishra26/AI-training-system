@@ -70,7 +70,7 @@ if uploaded_file:
                         
                         if selected == correct_option:
                             st.success("✅ Correct!")
-                            else:
+                        else:
                             st.error(f"❌ Incorrect! Correct answer: {correct_option}")
 
                 st.markdown("---")
