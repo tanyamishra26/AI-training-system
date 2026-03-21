@@ -37,7 +37,8 @@ if uploaded_file:
             selected = st.radio(
                 "Choose an option:",
                 q["options"],
-                key=i
+                key=i,
+                index=None  
             )
             
             if selected:
