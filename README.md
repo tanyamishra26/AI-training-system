@@ -144,7 +144,9 @@ streamlit run app.py
 ```
 
 ---
-## Demo
+## 📸 Demo
+
+![App Demo](assets/demo.png)
 
 ---
 ## How It Works
