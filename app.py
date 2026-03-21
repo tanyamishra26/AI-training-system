@@ -2,7 +2,7 @@ import streamlit as st
 from src.pdf_utils import extract_text_from_pdf
 from src.generators import generate_summary, generate_training, generate_quiz
 
-st.set_page_config(page_title="SOP AI Trainer", layout="wide")
+st.set_page_config(page_title="AI Trainer", layout="wide")
 
 st.title("AI Training System")
 
