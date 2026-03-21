@@ -1,4 +1,4 @@
-# SOP → AI Training System
+# AI Training System
 
 An AI-powered system that converts SOP (Standard Operating Procedure) documents into structured training content, including summaries, step-by-step instructions, and evaluation quizzes.
 
