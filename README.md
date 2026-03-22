@@ -62,7 +62,7 @@ The system provides a simple interface where users can upload an SOP and instant
         └────────────┬───────────────┘
                      ↓
         ┌────────────────────────────┐
-        │ Streamlit UI / Export      │
+        │ Streamlit UI               │
         └────────────────────────────┘
 
 ```
